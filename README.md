@@ -3,9 +3,9 @@
 2. Clone ACBot locally.
 3. In terminal, navigate to ACBot directory.
 4. Install dependencies: `pip install -r requirements.txt`
-5. Install ChromeDriver (make sure you also have chrome installed)
-    For macos, run `brew cask install chromedriver`
-    **If you have issues lauching ChromeDriver refer [here](https://stackoverflow.com/a/60374958)**
+5. Install ChromeDriver (make sure you also have chrome installed)  
+    For macos, run `brew cask install chromedriver`  
+    **If you have issues lauching ChromeDriver refer [here](https://stackoverflow.com/a/60374958)**  
     For Windows, refer to [here](https://www.kenst.com/2019/02/installing-chromedriver-on-windows/)
 6. Configure Username and Password
     - Rename the '.env.sample' file as '.env'
