@@ -78,7 +78,7 @@ class ACBot:
     def refresh(self):
         self.driver.refresh()
 
-    def reserve(self, event_title, event_date_time=None):
+    def reserve(self, event_title, event_date_time=None, any_time=False):
         
         if not self.state == State.BOOKINGS:
             raise IncorrectStateException
@@ -94,8 +94,10 @@ class ACBot:
             time_string = event_date_time.strftime("%H:%M:%S")
             event_time_search_xpath = '//td[contains(text(),"{0}")]'.format(time_string)
 
-            criteria_tuple = [event_name_search_xpath, event_date_search_xpath, event_time_search_xpath]
-            event_col_xpath = '/..'.join(criteria_tuple)
+            criteria_list = [event_name_search_xpath, event_date_search_xpath]
+            if not any_time:
+                criteria_list.append(event_time_search_xpath)
+            event_col_xpath = '/..'.join(criteria_list)
         
         else:
             event_col_xpath = event_name_search_xpath
