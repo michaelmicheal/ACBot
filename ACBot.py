@@ -24,6 +24,9 @@ class UnFoundEventException(ACBotException):
 class WaiverException(ACBotException):
     pass
 
+class AccountNumException(ACBotException):
+    pass
+
 class ACBot:
 
     def __init__(self):
@@ -65,8 +68,16 @@ class ACBot:
     def login(self):
         if not self.state == State.LOGIN:
             raise IncorrectStateException
-        self.__fill_input('UserLogin', constants.USERNAME)
-        self.__fill_input('Password', constants.PASSWORD)
+        if constants.ACCOUNT_NUM == 1:
+            username = constants.USERNAME1
+            password = constants.PASSWORD1
+        elif constants.ACCOUNT_NUM == 2:
+            username = constants.USERNAME2
+            password = constants.PASSWORD2
+        else:
+            raise AccountNumException
+        self.__fill_input('UserLogin', username)
+        self.__fill_input('Password', password)
         self.__press_button('submit_Login')
         self.state = State.BOOKINGS
 
